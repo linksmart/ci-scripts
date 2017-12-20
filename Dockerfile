@@ -23,4 +23,6 @@ ENV PATH ${PATH}:/scripts
 
 USER builder
 
+ENTRYPOINT []
+
 CMD ["./maven-release.sh"]
