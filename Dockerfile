@@ -14,14 +14,14 @@ ENV FILE=api-docs.json
 
 USER root
 RUN apk add --no-cache curl jq git bash
-RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
-RUN git config --global user.name ${SERVER_USERNAME}
 
 ADD *.sh /bin/
 RUN chmod +x /bin/*.sh
-#ENV PATH ${PATH}:/scripts
 
 USER builder
+
+RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
+RUN git config --global user.name ${SERVER_USERNAME}
 
 ENTRYPOINT []
 
