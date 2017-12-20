@@ -18,7 +18,7 @@ RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
 RUN git config --global user.name ${SERVER_USERNAME}
 
 ADD *.sh /bin/
-#RUN chmod +x /scripts/*.sh
+RUN chmod +x /bin/*.sh
 #ENV PATH ${PATH}:/scripts
 
 USER builder
