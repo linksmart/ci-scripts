@@ -21,4 +21,5 @@ echo "moving to /data/client/java/client"
 cd client
 
 echo "deploying"
-mvn deploy:deploy-file -D"pomFile=pom.xml" -D"file=target\service-catalog-client-2.2.jar"  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
+mvn install
+#mvn deploy:deploy-file -D"pomFile=pom.xml" -D"file=target\service-catalog-client-2.2.jar"  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
