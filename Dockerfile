@@ -14,33 +14,15 @@ ENV FILE=api-docs.json
 
 USER root
 RUN apk add --no-cache curl jq git bash sed
-RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
-RUN git config --global user.name ${SERVER_USERNAME}
+
+ADD *.sh /bin/
+RUN chmod +x /bin/*.sh
+
 USER builder
 
-ADD *.sh /scripts/
+RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
+RUN git config --global user.name ${SERVER_USERNAME}
 
-WORKDIR /scripts
+ENTRYPOINT []
 
-ENTRYPOINT ["sh"]
-CMD ["maven-release.sh"]
-
-EXPOSE 8319
-# NOTES:
-#	RUN:
-#  		docker run [options] <<image-name>> [command]
-#   OPTIONS:
-# 		Define volume for configuration file:
-#			-v <</path/on/host/machine/conf>>:/config
-# 		Define volume for configuration file:
-#			-v <</path/on/host/machine/dep>>:/dependencies
-# 		Disable/enable REST API:
-#			-e api_rest_enabled=<false/true>
-#		Define default broker
-#			-e connection_broker_mqtt_hostname=<hostname>
-#		Expose REST:
-#			-p "8319:8319"
-#   COMMAND:
-#       Custom configuration file (volume should be defined):
-#           /config/config.cfg
-#
+CMD ["./maven-release.sh"]
