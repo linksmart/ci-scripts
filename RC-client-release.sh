@@ -4,7 +4,7 @@
 ## Note: generate client			#
 ## if already exists: rm -R client	#
 #####################################
-cd data 
+cd /data 
 
 mvn install
 
