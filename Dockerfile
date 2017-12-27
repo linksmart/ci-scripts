@@ -13,7 +13,7 @@ ENV FILE=api-docs.json
 # add git for deployment plugin
 
 USER root
-RUN apk add --no-cache curl jq git bash
+RUN apk add --no-cache curl jq git bash sed
 RUN git config --global user.email "${SERVER_USERNAME}@linksmart.eu"
 RUN git config --global user.name ${SERVER_USERNAME}
 USER builder
