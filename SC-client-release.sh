@@ -22,4 +22,4 @@ cd client
 
 echo "deploying"
 mvn install
-mvn deploy:deploy-file -D"pomFile=pom.xml" -Dfile=target\service-catalog-client-`jq -r .info.version ../../apidoc/swagger.json`.jar  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
+#mvn deploy:deploy-file -D"pomFile=pom.xml" -Dfile=target\service-catalog-client-`jq -r .info.version ../../apidoc/swagger.json`.jar  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
