@@ -21,5 +21,5 @@ echo "moving to /data/client/java/client"
 cd /data/client/java/client
 
 echo "deploying"
-mvn -D"s.sc.version=`jq -r .info.version ../../apidoc/swagger.json`" install
+mvn -D"s.sc.version=`jq -r .info.version ../../../apidoc/swagger.json`" install
 #mvn deploy:deploy-file -D"pomFile=pom.xml" -Dfile=target\service-catalog-client-`jq -r .info.version ../../apidoc/swagger.json`.jar  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
