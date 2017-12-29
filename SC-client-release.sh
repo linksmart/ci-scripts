@@ -18,7 +18,7 @@ sed -i '0,/<name>swagger-java-client<\/name>/ s/<name>swagger-java-client<\/name
 sed -i s/'<version>1.0.0<\/version>'/'<version>'`jq -r .info.version ../../apidoc/swagger.json`'<\/version>'/ 'client/pom.xml' ;
 
 echo "moving to /data/client/java/client"
-cd client
+cd /data/client/java/client
 
 echo "deploying"
 mvn -D"s.sc.version=`jq -r .info.version ../../apidoc/swagger.json`" install
