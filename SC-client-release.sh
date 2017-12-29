@@ -20,6 +20,6 @@ sed -i s/'<version>1.0.0<\/version>'/'<version>'`jq -r .info.version ../../apido
 echo "moving to /data/client/java/client"
 cd /data/client/java/client
 
-echo "deploying"
-mvn -D"s.sc.version=`jq -r .info.version ../../../apidoc/swagger.json`" install
+echo "installing"
+mvn install
 #mvn deploy:deploy-file -D"pomFile=pom.xml" -Dfile=target\service-catalog-client-`jq -r .info.version ../../apidoc/swagger.json`.jar  -D"repositoryId=releases" -"Durl=https://nexus.linksmart.eu/repository/maven-releases/";
