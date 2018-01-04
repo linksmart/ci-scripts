@@ -3,4 +3,4 @@
 echo "testing"
 cd /data/sc/integration-test/registration3rdService
 
-mvn -Dtest=* -D'ls.sc.version'=`jq -r .info.version /data/sc/apidoc/swagger.json` test
+mvn -B -Dtest=* -D'ls.sc.version'=`jq -r .info.version /data/sc/apidoc/swagger.json` test
