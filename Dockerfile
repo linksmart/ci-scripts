@@ -6,7 +6,6 @@ ENV SERVER_PASSWORD=""
 ENV SERVER_USERNAME=${SERVER_USERNAME}
 ENV SERVER_USERNAME=pipelines
 ENV REPO=la/data-processing-agent.git
-ENV REPO=la/data-processing-agent.git
 ENV URL="http://dpa:8319/v2/api-docs?group=LinkSmart%20(R)%20IoT%20Learning%20Agent"
 ENV FILE=api-docs.json
 
