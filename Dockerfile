@@ -16,6 +16,8 @@ RUN apk add --no-cache curl jq git bash sed
 
 ADD *.sh /bin/
 RUN chmod +x /bin/*.sh
+RUN mkdir /data/
+RUN chown -R /data/
 
 USER builder
 
