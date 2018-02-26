@@ -2,9 +2,9 @@
 # cloning and building apache code
 cd /data/ 
 
-git clone https://${SERVER_USERNAME}@code.linksmart.eu/scm/${REPO} -b ${branch} code
+git clone https://${SERVER_USERNAME}@code.linksmart.eu/scm/${REPO} -b ${branch} /data/code
 
-cd code
+cd /data/code
 
 
 mvn -s /maven/settings.xml -B release:prepare -DreleaseVersion=${version} -Dpassword=${SERVER_PASSWORD} -Dusername=${SERVER_USERNAME} 
