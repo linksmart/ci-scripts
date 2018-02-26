@@ -15,7 +15,7 @@ USER root
 RUN apk add --no-cache curl jq git bash sed
 
 ADD *.sh /bin/
-RUN chmod ugo+rx /bin/*.sh
+RUN chmod -R ugo+rx /bin/*
 RUN chown -R builder /data/
 
 USER builder
