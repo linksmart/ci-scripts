@@ -11,7 +11,7 @@ if [ -z ${FILE} ]; then
 	FILE=api-docs.json
 fi
 
-until [ -s ${FILE} ]; do 
+until [ ! -s ${FILE} ]; do 
 	curl -f --stderr err ${URL} | jq '.' > ${FILE}
 	cat err
 	sleep 1
