@@ -18,5 +18,5 @@ until [ -s ${FILE} ]; do
 done;
 
 git add ${FILE}
-git commit -m "AUTOMATIC COMMIT: updating Open API"
+git commit -am "AUTOMATIC COMMIT: updating Open API"
 git push 
