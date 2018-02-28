@@ -10,13 +10,13 @@ fi
 if [ -z ${FILE} ]; then 
 	FILE=api-docs.json
 fi
-ls -l
+echo "" > ${FILE}
 until [ -s ${FILE} ]; do 
 	sleep 1;
 	curl -f --stderr err ${URL} | jq '.' > ${FILE};
 	cat err;	
 done;
-ls -l
+
 git add ${FILE}
 git commit -m "AUTOMATIC COMMIT: updating Open API"
 git push 
