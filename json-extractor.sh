@@ -11,10 +11,10 @@ if [ -z ${FILE} ]; then
 	FILE=api-docs.json
 fi
 
-until [ ! -s ${FILE} ]; do 
-	curl -f --stderr err ${URL} | jq '.' > ${FILE}
-	cat err
-	sleep 1
+until [ -s ${FILE} ]; do 
+	sleep 1;
+	curl -f --stderr err ${URL} | jq '.' > ${FILE};
+	cat err;	
 done;
 
 git add ${FILE}
