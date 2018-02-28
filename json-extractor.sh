@@ -11,10 +11,16 @@ if [ -z ${FILE} ]; then
 	FILE=api-docs.json
 fi
 echo "" > ${FILE}
+
+echo "calling endpoint ${URL} storeging in ${FILE} ...";
+curl -f --stderr err ${URL} | jq '.' > ${FILE};
+cat err;
+
 until [ -s ${FILE} ]; do 
 	sleep 1;
+    echo "calling endpoint ${URL} storeging in ${FILE} ...";
 	curl -f --stderr err ${URL} | jq '.' > ${FILE};
-	cat err;	
+	cat err;
 done;
 
 git add ${FILE}
