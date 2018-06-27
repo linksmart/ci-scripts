@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git clone git clone https://code.linksmart.eu/scm/la/data-processing-agent.git --branch dev /data/agent
+git clone https://code.linksmart.eu/scm/la/data-processing-agent.git --branch dev /data/agent
 git clone https://code.linksmart.eu/scm/sc/service-catalog.git /data/sc
 
 echo "testing"
