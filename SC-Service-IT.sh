@@ -1,7 +1,7 @@
 #!/bin/sh
 
 rm -R /data/agent
-git clone https://code.linksmart.eu/scm/la/data-processing-agent.git --branch dev rm -R /data/agent
+git clone https://code.linksmart.eu/scm/la/data-processing-agent.git --branch dev /data/agent
 
 rm -R /data/sc
 git clone https://code.linksmart.eu/scm/sc/service-catalog.git /data/sc
