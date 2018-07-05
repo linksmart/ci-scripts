@@ -12,7 +12,7 @@ ENV FILE=api-docs.json
 # add git for deployment plugin
 
 USER root
-RUN apk add --no-cache curl jq git bash sed
+RUN apt-get update && apt-get install -y --no-install-recommends jq && rm -rf /var/lib/apt/lists/*
 
 ADD *.sh /bin/
 RUN chmod -R ugo+rx /bin/
