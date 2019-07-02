@@ -33,7 +33,7 @@ do
     fi
     echo "Building $output_name"
 
-    go build -mod=vendor -ldflags "$LDFLAGS" -o $output_name
+    go build -mod=vendor -tags="netgo -a -v" -ldflags "$LDFLAGS" -o $output_name
     if [ $? -ne 0 ]; then
         echo "An error has occurred! Aborting the script execution..."
         exit 1
