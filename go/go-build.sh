@@ -5,12 +5,13 @@
 # NAME=app ./go-build.sh
 # Build for specific platforms:
 # NAME=app PLATFORMS="linux/arm64 linux/arm" ./go-build.sh
-# Build with ldflags:
-# NAME=app LDFLAGS="-X main.Version=$version -X main.BuildNumber=$buildnum" ./go-build.sh
+# Pass version and build number (ldflags):
+# NAME=app VERSION=v1.0.0 BUILDNUM=1 ./go-build.sh
 
 echo "Go Builder: https://github.com/linksmart/ci-scripts/blob/master/go/go-build.sh"
 
 output_dir=bin
+GO111MODULE=on
 
 if [[ -z "$NAME" ]]; then
   echo "usage: NAME=app sh go-build.sh"
@@ -33,7 +34,7 @@ do
     fi
     echo "Building $output_name"
 
-    go build -mod=vendor -tags="netgo -a -v" -ldflags "$LDFLAGS" -o $output_name
+    go build -mod=vendor -tags="netgo -a -v" -ldflags "-X main.Version=$VERSION -X main.BuildNumber=$BUILDNUM" -o $output_name
     if [ $? -ne 0 ]; then
         echo "An error has occurred! Aborting the script execution..."
         exit 1
@@ -42,3 +43,4 @@ done
 
 # Adapted from: 
 # https://www.digitalocean.com/community/tutorials/how-to-build-go-executables-for-multiple-platforms-on-ubuntu-16-04
+
