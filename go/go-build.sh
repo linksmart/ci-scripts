@@ -41,6 +41,7 @@ do
         echo "An error has occurred! Aborting the script execution..."
         exit 1
     fi
+    chmod +x $output_name
 done
 
 # Adapted from: 
