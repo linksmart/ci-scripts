@@ -15,8 +15,11 @@ git branch -d tmp
 
 # tagging release
 git tag v$ARTIFACT_VERSION
+git status
 git add pom.xml
+git status
 git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
+git status
 
 # commit all changes and tags
 git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --all
