@@ -18,6 +18,10 @@ git tag v$ARTIFACT_VERSION
 git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
 
+# commit all changes and tags
+git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --all
+git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --tags
+
 # prepearign master for new snapshot version
 git fetch origin master:master
 git branch -a
