@@ -5,6 +5,7 @@ cp -ar ci/java/.mvn .
 cp ci/java/.travis.settings.xml .
 cp ci/java/.versionScript.py .
 cp ci/java/maven-release.sh .
+chmod +x maven-release.sh
 
 if [ "$TRAVIS_BRANCH" = "release" ]
  then
