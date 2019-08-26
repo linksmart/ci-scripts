@@ -16,7 +16,7 @@ git branch -d tmp
 # tagging release
 git tag v$ARTIFACT_VERSION
 git add pom.xml
-git commit -m \"[skip travis] AUTOMATIC COMMIT: tagging version\"
+git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
 
 # prepearign master for new snapshot version
 git fetch origin master:master
@@ -25,7 +25,7 @@ git checkout master
 git merge release
 python3 .versionScript.py
 git add pom.xml
-git commit -m \"[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT\"
+git commit -m "[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT"
 
 # commit all changes and tags
 git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --all
