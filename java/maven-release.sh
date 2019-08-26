@@ -9,6 +9,10 @@ git config --global user.name 'Travis CI'
 
 # moving realocate head
 git branch tmp
+git status
+git add pom.xml
+git status
+git commit -m "[skip travis] AUTOMATIC COMMIT: released pom"
 git checkout release
 git merge tmp
 git branch -d tmp
