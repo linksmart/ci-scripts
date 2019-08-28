@@ -26,8 +26,8 @@ git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
 git status
 
 # commit all changes and tags
-git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --all
-git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --tags
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
 
 # prepearign master for new snapshot version
 git fetch origin master:master
@@ -39,5 +39,5 @@ git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT"
 
 # commit all changes and tags
-git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --all
-git push https://${GH_TOKEN}@github.com/linksmart/linksmart-java-utils.git --tags
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --all
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
