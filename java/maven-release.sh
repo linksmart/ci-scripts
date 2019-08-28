@@ -1,4 +1,4 @@
-#!/bin/sh -iv
+#!/bin/sh -ev
 
 # deploying artifacts in nexus
 mvn deploy
