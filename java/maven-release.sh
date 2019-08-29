@@ -1,36 +1,39 @@
-#!/bin/sh -ev
-
-# deploying artifacts in nexus
-mvn deploy
+#!/bin/sh -e
 
 # configuring git
 git config --global user.email 'travis@travis-ci.org'
 git config --global user.name 'Travis CI'
 
+echo "GIT: adding pom and commit"
 git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: released pom"
 
-# tagging release
+echo "GIT: tagging (v${ARTIFACT_VERSION}) and commiting"
 git tag v$ARTIFACT_VERSION
 git status
 git add pom.xml
-git status
 git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
-git status
 
-# commit all changes and tags
+echo "Maven: deploy"
+mvn deploy
+
+echo "GIT: push commits and taggs"
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
 
-# prepearign master for new snapshot version
+echo "GIT: fetching remote master"
 git fetch origin master:master
 git branch -a
+
+echo "GIT: checkout master and merge with release"
 git checkout master
 git merge release
+
+echo "update pom.xm to next snapshot"
 python3 .versionScript.py
 git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT"
 
-# commit all changes and tags
+echo "GIT: push commits and taggs"
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --all
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
