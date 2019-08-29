@@ -33,7 +33,7 @@ def toNextVersion():
         if "-SNAPSHOT" in ver:# release (remove snapshot)
             ver = str(mainVer)+"."+str(minorVer)+"."+str(patchVer)
         else: # minor
-            ver = str(mainVer)+"."+str(minorVer+1)+"."+str(patchVer)+tag
+            ver = str(mainVer)+"."+str(minorVer+1)+".0"+tag
 
 def currentVersion(line):
     global mainVer
