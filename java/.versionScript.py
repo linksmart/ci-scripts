@@ -42,7 +42,7 @@ def currentVersion(line):
     global ver
     verPtr=line.find("<!--VerNo-->")
     aux=line.replace("<!--VerNo-->","")
-    ver=aux[verPtr:aux.find("</version>")]
+    ver=aux[verPtr:aux.find("</")]
     mainVer=int(ver.split('.')[0])
     minorVer=int(ver.split('.')[1])
     if tag in ver.split('.')[2]:
@@ -68,7 +68,10 @@ def nextPom(pom):
             #print("got version entry: "+line)
             currentVersion(line)
             toNextVersion()
-            line="\t<version><!--VerNo-->"+ver+"</version>\n"
+            if "<version>" in line:
+                line="\t<version><!--VerNo-->"+ver+"</version>\n"
+            else:
+                line="\t\t<ls.se.agents.version><!--VerNo-->"+ver+"</ls.se.agents.version>\n"
             #print("new version entry: "+line)
 
         lines.append(line)
