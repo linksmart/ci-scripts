@@ -10,16 +10,16 @@ git commit -m "[skip travis] AUTOMATIC COMMIT: released pom"
 
 echo "GIT: tagging (v${ARTIFACT_VERSION}) and commiting"
 git tag v$ARTIFACT_VERSION
-git status
-git add pom.xml
-git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
+#git status
+#git add pom.xml
+#git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
 
 echo "Maven: deploy"
 mvn deploy
 
-echo "GIT: push commits and taggs"
+echo "GIT: push commits and taggs (https://\${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git)"
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
-git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --tags
 
 echo "GIT: fetching remote master"
 git fetch origin master:master
@@ -34,6 +34,6 @@ python3 .versionScript.py
 git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT"
 
-echo "GIT: push commits and taggs"
-git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --all
-git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags
+echo "GIT: push commits and taggs (https://\${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git)"
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --tags
