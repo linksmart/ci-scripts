@@ -1,4 +1,4 @@
-#!/bin/sh -ev
+#!/bin/sh -e
 
 git clone https://github.com/linksmart/ci-scripts.git ci
 cp -ar ci/java/.mvn .
