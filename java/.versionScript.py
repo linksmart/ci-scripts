@@ -8,7 +8,6 @@ minorVer = 3
 patchVer = 0
 tag = "-SNAPSHOT"
 ver=str(mainVer)+"."+str(minorVer)+"."+str(patchVer)+tag
-original =""
 
 def findPoms():
     path = './'
@@ -20,7 +19,6 @@ def toNextVersion():
     global ver
     global nextVersion
     global tag
-    global original
 
     if nextVersion==0: # mayor snapshot
         ver = str(mainVer+1)+"."+str(minorVer)+"."+str(patchVer)+tag
@@ -51,7 +49,6 @@ def currentVersion(line):
     else:
         #print(ver)
         patchVer=int(ver.split(".")[2])
-    original = ver
 
 def nextPom(pom):
     #print("generating update for pom: "+pom)
@@ -70,7 +67,7 @@ def nextPom(pom):
             #print("got version entry: "+line)
             currentVersion(line)
             toNextVersion()
-            line = line.replace(original,ver)
+            line = line.replace(line[line.find("->"):line.find("</")],"->"+ver)
 
         lines.append(line)
     fh.close()
