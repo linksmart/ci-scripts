@@ -14,7 +14,7 @@ def findPoms():
     path = './'
     files = [f for f in glob.glob(path + "**/"+fileName, recursive=True)]
     #print("found "+str(len(files))+" poms")
-    return files;
+    return files
 
 def toNextVersion():
     global ver

@@ -14,5 +14,6 @@ chmod +x git-realocate-head.sh
 if [ "$TRAVIS_BRANCH" = "release" ]
  then
    export ARTIFACT_VERSION=`python3 .versionScript.py`
+   [ ! "$ARTIFACT_VERSION" ] && exit 1
    echo "releasing..."
 fi
