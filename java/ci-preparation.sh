@@ -1,8 +1,10 @@
 #!/bin/sh -e
 
 git clone https://github.com/linksmart/ci-scripts.git ci
-echo "copying maven configuration files and ci scripts  ..."
+echo "copying maven configuration files  ..."
 cp -arv ci/java/.mvn .
+cp -v ci/java/.travis.settings.xml .
+echo "copying ci scripts  ..."
 cp -v ci/* .
 cp -v ci/java/* .
 echo "granting execution rights ..."
