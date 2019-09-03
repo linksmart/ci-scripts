@@ -2,16 +2,16 @@
 
 git clone https://github.com/linksmart/ci-scripts.git ci
 echo "copying maven configuration files  ..."
-cp -arv ci/java/.mvn .
-cp -v ci/java/.travis.settings.xml .
+cp -ar ci/java/.mvn .
+cp ci/java/.travis.settings.xml .
 
 echo "copying ci scripts  ..."
-cp -v ci/git-realocate-head.sh .
-cp -v ci/java/versionScript.py .
-cp -v ci/java/maven-release.py .
+cp ci/git-realocate-head.sh .
+cp ci/java/versionScript.py .
+cp ci/java/maven-release.py .
 
 echo "granting execution rights ..."
-chmod -v +x *.sh
+chmod +x *.sh
 
 echo "realocating head ..."
 . git-realocate-head.sh
