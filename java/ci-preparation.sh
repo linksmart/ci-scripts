@@ -8,7 +8,7 @@ cp ci/java/.travis.settings.xml .
 echo "copying ci scripts  ..."
 cp ci/git-realocate-head.sh .
 cp ci/java/versionScript.py .
-cp ci/java/maven-release.py .
+cp ci/java/maven-release.sh .
 
 echo "granting execution rights ..."
 chmod +x *.sh
