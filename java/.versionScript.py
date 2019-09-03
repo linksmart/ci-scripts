@@ -1,4 +1,4 @@
-import glob, argparse, os
+import glob, argparse, os, fnmatch
 
 # 0 Mayor, 1 minor, 2 patch, 3 release, 4 default
 nextVersion = 4
