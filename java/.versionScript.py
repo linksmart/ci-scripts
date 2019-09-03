@@ -11,8 +11,11 @@ ver=str(mainVer)+"."+str(minorVer)+"."+str(patchVer)+tag
 
 def findPoms():
     path = './'
-    files = [f for f in glob.glob(path + "**/"+fileName, recursive=True)]
-    #print("found "+str(len(files))+" poms")
+    #files = [f for f in glob.glob(path + "**/"+fileName, recursive=True)]
+    files = []
+    for root, dirnames, filenames in os.walk(path):
+        for filename in fnmatch.filter(filenames, '*.xml'):
+            files.append(os.path.join(root, filename))
     return files
 
 def toNextVersion():
