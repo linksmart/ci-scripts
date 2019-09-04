@@ -29,7 +29,7 @@ git checkout master
 git merge release
 
 echo "update pom.xm to next snapshot"
-python3 .versionScript.py
+python3 versionScript.py
 git add pom.xml
 git commit -m "[skip travis] AUTOMATIC COMMIT: preparing new SNAPSHOT"
 
