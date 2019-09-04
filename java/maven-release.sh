@@ -15,7 +15,7 @@ git tag v$ARTIFACT_VERSION
 #git commit -m "[skip travis] AUTOMATIC COMMIT: tagging version"
 
 echo "Maven: deploy"
-mvn deploy
+mvn deploy -B
 
 echo "GIT: push commits and taggs (https://\${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git)"
 git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
