@@ -18,7 +18,8 @@ echo "realocating head ..."
 
 if [ "$TRAVIS_BRANCH" = "release" ]
  then
-   echo "releasing..."
+   printf "preparing releas version ... "
    export ARTIFACT_VERSION=`python3 versionScript.py`
    [ ! "$ARTIFACT_VERSION" ] && exit 1
+   echo ${ARTIFACT_VERSION}
 fi
