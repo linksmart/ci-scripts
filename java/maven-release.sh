@@ -5,19 +5,20 @@ git config --global user.email 'travis@travis-ci.org'
 git config --global user.name 'Travis CI'
 
 echo "GIT: adding pom and commit"
-#git add pom.xml
-#git commit -m "[skip travis] AUTOMATIC COMMIT: released pom"
+git add pom.xml
+git commit -m "[skip travis] AUTOMATIC COMMIT: released pom"
 
 echo "GIT: tagging (v${ARTIFACT_VERSION}) and commiting"
-#git tag v$ARTIFACT_VERSION
+git tag v$ARTIFACT_VERSION
 
 echo "Maven: deploy"
-#mvn deploy -B
+mvn deploy -B
 
 echo "GIT: push commits and taggs (https://\${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git)"
-#git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
-#git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --tags
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --all
+git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git --tags
 
+echo "Discard all changes that have not been pushed"
 git reset --hard
 
 echo "GIT: fetching remote master"
