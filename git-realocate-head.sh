@@ -1,3 +1,5 @@
+#!/bin/sh -e
+
 # moving realocate head
 if [ "$TRAVIS" ]
  then
