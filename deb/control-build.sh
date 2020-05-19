@@ -2,7 +2,14 @@
 
 # EXAMPLES
 usage() {
-  echo "usage: NAME=app PLATFORM=amd64 DEPENDENCIES=\"libc-bin (>= 2.19)\" MAINAINER=\"Test <email@example>\" DESCRIPTION=Testapp sh control-build.sh"
+  echo "usage: " \
+  "NAME=app " \
+  "PLATFORM=amd64 " \
+  "DEPENDENCIES=\"libc-bin (>= 2.19)\" " \
+  "MAINAINER=\"Test <email@example>\" " \
+  "DESCRIPTION=Testapp " \
+  "DEBBUILDPATH=\$HOME/deb " \
+  "sh control-build.sh"
   exit 1
 }
 
@@ -28,11 +35,21 @@ if [[ -z "$DESCRIPTION" ]]; then
   usage
 fi
 
-echo "Package: $NAME\n" > $HOME/deb/DEBIAN/control
-echo "Version: x.x-x\n" >> $HOME/deb/DEBIAN/control
-echo "Section: base\n" >> $HOME/deb/DEBIAN/control
-echo "Priority: optional\n" >> $HOME/deb/DEBIAN/control
-echo "Architecture: $PLATFORM\n" >> $HOME/deb/DEBIAN/control
-echo "Depends: $DEPENDENCIES\n" >> $HOME/deb/DEBIAN/control
-echo "Maintainer: $MAINAINER\n" >> $HOME/deb/DEBIAN/control
-echo "Description: $DESCRIPTION\n" >> $HOME/deb/DEBIAN/control
+if [[ -z "$DEBBUILDPATH" ]]; then
+  usage
+fi
+
+if [[ -z "$VERSION" ]]; then
+  usage
+fi
+
+mkdir -p $DEBBUILDPATH/DEBIAN
+
+echo "Package: $NAME\n" > $DEBBUILDPATH/DEBIAN/control
+echo "Version: $VERSION\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Section: base\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Priority: optional\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Architecture: $PLATFORM\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Depends: $DEPENDENCIES\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Maintainer: $MAINAINER\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Description: $DESCRIPTION\n" >> $DEBBUILDPATH/DEBIAN/control
