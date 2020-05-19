@@ -8,7 +8,6 @@ usage() {
   "DEPENDENCIES=\"libc-bin (>= 2.19)\" " \
   "MAINAINER=\"Test <email@example>\" " \
   "DESCRIPTION=Testapp " \
-  "DEBBUILDPATH=\$HOME/deb " \
   "VERSION=1.0-0 " \
   "sh control-build.sh"
   exit 1
@@ -36,21 +35,15 @@ if [[ -z "$DESCRIPTION" ]]; then
   usage
 fi
 
-if [[ -z "$DEBBUILDPATH" ]]; then
-  usage
-fi
-
 if [[ -z "$VERSION" ]]; then
   usage
 fi
 
-mkdir -p $DEBBUILDPATH/DEBIAN
-
-echo "Package: $NAME" > $DEBBUILDPATH/DEBIAN/control
-echo "Version: $VERSION" >> $DEBBUILDPATH/DEBIAN/control
-echo "Section: base" >> $DEBBUILDPATH/DEBIAN/control
-echo "Priority: optional" >> $DEBBUILDPATH/DEBIAN/control
-echo "Architecture: $PLATFORM" >> $DEBBUILDPATH/DEBIAN/control
-echo "Depends: $DEPENDENCIES" >> $DEBBUILDPATH/DEBIAN/control
-echo "Maintainer: $MAINAINER" >> $DEBBUILDPATH/DEBIAN/control
-echo "Description: $DESCRIPTION" >> $DEBBUILDPATH/DEBIAN/control
+echo "Package: $NAME" > control
+echo "Version: $VERSION" >> control
+echo "Section: base" >> control
+echo "Priority: optional" >> control
+echo "Architecture: $PLATFORM" >> control
+echo "Depends: $DEPENDENCIES" >> control
+echo "Maintainer: $MAINAINER" >> control
+echo "Description: $DESCRIPTION" >> control

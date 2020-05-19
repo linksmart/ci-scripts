@@ -7,7 +7,6 @@ usage() {
   "DESCRIPTION=Testapp " \
   "EXEPATH=testapp" \
   "EXEARGUMENTS=-v" \
-  "DEBBUILDPATH=\$HOME/deb " \
   "sh service-build.sh"
   exit 1
 }
@@ -26,10 +25,6 @@ if [[ -z "$EXEPATH" ]]; then
   usage  
 fi
 
-if [[ -z "$DEBBUILDPATH" ]]; then
-  usage
-fi
-
 if [[ -z "$EXEARGUMENTS" ]]; then
   usage
 fi
@@ -37,25 +32,23 @@ fi
 INSTLOCAL="/usr/local/bin/$NAME"
 BINARY="$INSTLOCAL/$EXEPATH"
 
-mkdir -p "$DEBBUILDPATH/lib/systemd/system"
-
-echo "[Unit]"                                                  > $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "Description=$DESCRIPTION"                               >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "After=network-online.target"                            >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo ""                                                       >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "[Service]"                                              >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "User=${NAME}bot"                                        >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "Group=${NAME}bot"                                       >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "WorkingDirectory=$INSTLOCAL"                            >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "PermissionsStartOnly=true"                              >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "ExecStartPre=setcap 'cap_net_bind_service=+ep' $BINARY" >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "ExecStart=$BINARY $EXEARGUMENTS"                        >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "KillMode=control-group"                                 >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "TimeoutStopSec=5"                                       >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "Restart=on-failure"                                     >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "StandardOutput=null"                                    >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "StandardError=syslog"                                   >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo ""                                                       >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "[Install]"                                              >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "WantedBy=multi-user.target"                             >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
-echo "Alias=$NAME.service"                                    >> $DEBBUILDPATH/lib/systemd/system/$NAME.service
+echo "[Unit]"                                                  > service-$NAME
+echo "Description=$DESCRIPTION"                               >> service-$NAME
+echo "After=network-online.target"                            >> service-$NAME
+echo ""                                                       >> service-$NAME
+echo "[Service]"                                              >> service-$NAME
+echo "User=${NAME}bot"                                        >> service-$NAME
+echo "Group=${NAME}bot"                                       >> service-$NAME
+echo "WorkingDirectory=$INSTLOCAL"                            >> service-$NAME
+echo "PermissionsStartOnly=true"                              >> service-$NAME
+echo "ExecStartPre=setcap 'cap_net_bind_service=+ep' $BINARY" >> service-$NAME
+echo "ExecStart=$BINARY $EXEARGUMENTS"                        >> service-$NAME
+echo "KillMode=control-group"                                 >> service-$NAME
+echo "TimeoutStopSec=5"                                       >> service-$NAME
+echo "Restart=on-failure"                                     >> service-$NAME
+echo "StandardOutput=null"                                    >> service-$NAME
+echo "StandardError=syslog"                                   >> service-$NAME
+echo ""                                                       >> service-$NAME
+echo "[Install]"                                              >> service-$NAME
+echo "WantedBy=multi-user.target"                             >> service-$NAME
+echo "Alias=$NAME.service"                                    >> service-$NAME
