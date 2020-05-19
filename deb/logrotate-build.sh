@@ -21,7 +21,7 @@ fi
 
 mkdir -p $DEBBUILDPATH/etc/logrotate.d
 
-echo "/var/log/loramap.log {"  > $DEBBUILDPATH/etc/logrotate.d/$NAME.conf
+echo "/var/log/${NAME}.log {"  > $DEBBUILDPATH/etc/logrotate.d/$NAME.conf
 echo "	compress"             >> $DEBBUILDPATH/etc/logrotate.d/$NAME.conf
 echo "	copytruncate"         >> $DEBBUILDPATH/etc/logrotate.d/$NAME.conf
 echo "	daily"                >> $DEBBUILDPATH/etc/logrotate.d/$NAME.conf
