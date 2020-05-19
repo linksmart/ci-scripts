@@ -9,6 +9,7 @@ usage() {
   "MAINAINER=\"Test <email@example>\" " \
   "DESCRIPTION=Testapp " \
   "DEBBUILDPATH=\$HOME/deb " \
+  "VERSION=1.0-0 " \
   "sh control-build.sh"
   exit 1
 }
@@ -45,11 +46,11 @@ fi
 
 mkdir -p $DEBBUILDPATH/DEBIAN
 
-echo "Package: $NAME\n" > $DEBBUILDPATH/DEBIAN/control
-echo "Version: $VERSION\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Section: base\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Priority: optional\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Architecture: $PLATFORM\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Depends: $DEPENDENCIES\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Maintainer: $MAINAINER\n" >> $DEBBUILDPATH/DEBIAN/control
-echo "Description: $DESCRIPTION\n" >> $DEBBUILDPATH/DEBIAN/control
+echo "Package: $NAME" > $DEBBUILDPATH/DEBIAN/control
+echo "Version: $VERSION" >> $DEBBUILDPATH/DEBIAN/control
+echo "Section: base" >> $DEBBUILDPATH/DEBIAN/control
+echo "Priority: optional" >> $DEBBUILDPATH/DEBIAN/control
+echo "Architecture: $PLATFORM" >> $DEBBUILDPATH/DEBIAN/control
+echo "Depends: $DEPENDENCIES" >> $DEBBUILDPATH/DEBIAN/control
+echo "Maintainer: $MAINAINER" >> $DEBBUILDPATH/DEBIAN/control
+echo "Description: $DESCRIPTION" >> $DEBBUILDPATH/DEBIAN/control
