@@ -44,10 +44,10 @@ echo "    service ${NAME} start"                             >> $DEBBUILDPATH/DE
 echo "    rm /tmp/${NAME}_service_runner"                    >> $DEBBUILDPATH/DEBIAN/postinst
 echo "fi"                                                    >> $DEBBUILDPATH/DEBIAN/postinst
 
-echo "#!/bin/bash"                                                  > $DEBBUILDPATH/DEBIAN/prerm
-echo ""                                                            >> $DEBBUILDPATH/DEBIAN/prerm
-echo "if [[ $(systemctl is-active ${NAME} || true) == "active" ]]" >> $DEBBUILDPATH/DEBIAN/prerm
-echo "then"                                                        >> $DEBBUILDPATH/DEBIAN/prerm
-echo "    touch /tmp/${NAME}_service_runner"                       >> $DEBBUILDPATH/DEBIAN/prerm
-echo "    service ${NAME} stop"                                    >> $DEBBUILDPATH/DEBIAN/prerm
-echo "fi"                                                          >> $DEBBUILDPATH/DEBIAN/prerm
+echo "#!/bin/bash"                                                     > $DEBBUILDPATH/DEBIAN/prerm
+echo ""                                                               >> $DEBBUILDPATH/DEBIAN/prerm
+echo "if [[ \$(systemctl is-active ${NAME} || true) == \"active\" ]]" >> $DEBBUILDPATH/DEBIAN/prerm
+echo "then"                                                           >> $DEBBUILDPATH/DEBIAN/prerm
+echo "    touch /tmp/${NAME}_service_runner"                          >> $DEBBUILDPATH/DEBIAN/prerm
+echo "    service ${NAME} stop"                                       >> $DEBBUILDPATH/DEBIAN/prerm
+echo "fi"                                                             >> $DEBBUILDPATH/DEBIAN/prerm
