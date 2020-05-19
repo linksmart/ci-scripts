@@ -12,7 +12,7 @@ usage() {
   exit 1
 }
 
-echo "DEB Builder pre-post-file: https://github.com/linksmart/ci-scripts/blob/master/deb/service-build.sh"
+echo "DEB Builder service-file: https://github.com/linksmart/ci-scripts/blob/master/deb/service-build.sh"
 
 if [[ -z "$DESCRIPTION" ]]; then
   usage
