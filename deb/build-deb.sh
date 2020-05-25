@@ -43,7 +43,7 @@ chmod 755 $EXEC
 
 echo "Copy programm files to $EXEC."
 
-cp -t $EXEC/ $COPYCONFIG
+cp -t $CONFIG/ $COPYCONFIG
 chmod 644 $CONFIG/*
 chmod 755 $CONFIG
 
@@ -58,10 +58,10 @@ dpkg-deb --build $ROOT
 
 echo "Build deb packet."
 
-TARGETFILE="$NAME""_$VERSION.deb"
-mv $HOMEDIR/deb.deb "Builds/$PLATFORM-$TARGETFILE"
+TARGETFILE="$PLATFORM-${NAME}_$VERSION.deb"
+mv $HOMEDIR/deb.deb "Builds/$TARGETFILE"
 
-echo "Move $PLATFORM-$TARGETFILE to Builds."
+echo "Move $TARGETFILE to Builds."
 
 rm $HOMEDIR/deb -r
 
