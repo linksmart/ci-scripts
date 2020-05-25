@@ -69,4 +69,4 @@ rm $HOMEDIR/deb -r
 
 echo "Remove $HOMEDIR/deb."
 
-echo "##[set-output name=debuilderfile;]$TARGETFILE"
+echo "::set-output name=debuilderfile::$TARGETFILE"
