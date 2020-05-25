@@ -1,7 +1,5 @@
 #!/bin/bash
 
-exit 0
-
 HOMEDIR=$HOME
 ROOT="$HOMEDIR/deb"
 OUTPUT="../bin/Release/netcoreapp3.0"
