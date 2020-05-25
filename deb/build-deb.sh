@@ -38,7 +38,7 @@ chmod 644 $SYSTEMD/"$NAME.service"
 echo "Copy $NAME.service to $SYSTEMD."
 
 cp -t $EXEC/ $COPYEXEC 
-chmod 644 $EXEC/*
+chmod 755 $EXEC/*
 chmod 755 $EXEC
 
 echo "Copy programm files to $EXEC."
