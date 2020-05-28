@@ -35,6 +35,15 @@ if [[ -z "$VERSION" ]]; then
   usage
 fi
 
+hello=ho02123ware38384you443d34o3434ingtod38384day
+re='^.*?([0-9]+.*)$'
+if [[ $VERSION =~ $re ]]; do
+  VERSION=${BASH_REMATCH[1]}
+else
+  echo "could not found a number in string";
+  usage
+done
+
 echo "Package: $NAME" > control
 echo "Version: $VERSION" >> control
 echo "Section: base" >> control
