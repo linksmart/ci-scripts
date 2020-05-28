@@ -56,7 +56,7 @@ dpkg-deb --build $ROOT
 
 echo "Build deb packet."
 
-TARGETFILE="$PLATFORM-${NAME}_$VERSION.deb"
+TARGETFILE="${NAME}_${VERSION}_${PLATFORM}.deb"
 mv $HOMEDIR/deb.deb "../Builds/$TARGETFILE"
 
 echo "Move $TARGETFILE to Builds."
