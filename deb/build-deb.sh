@@ -26,8 +26,6 @@ cp control $DEBIAN/control
 cp preinst $DEBIAN
 cp postinst $DEBIAN
 cp prerm $DEBIAN
-sed -i s/Version:\ x\.x-x/"Version: $VERSION"/ $DEBIAN/control
-sed -i s/Architecture:\ any/"Architecture: $PLATFORM"/ $DEBIAN/control
 chmod 755 $DEBIAN -R
 
 echo "Copy deb control files."

@@ -23,10 +23,6 @@ if [[ -z "$PLATFORM" ]]; then
   usage
 fi
 
-if [[ -z "$DEPENDENCIES" ]]; then
-  usage
-fi
-
 if [[ -z "$MAINAINER" ]]; then
   usage
 fi
@@ -44,6 +40,8 @@ echo "Version: $VERSION" >> control
 echo "Section: base" >> control
 echo "Priority: optional" >> control
 echo "Architecture: $PLATFORM" >> control
-echo "Depends: $DEPENDENCIES" >> control
+if [[ -n "$DEPENDENCIES" ]]; then
+  echo "Depends: $DEPENDENCIES" >> control
+fi
 echo "Maintainer: $MAINAINER" >> control
 echo "Description: $DESCRIPTION" >> control
