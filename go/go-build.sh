@@ -25,6 +25,14 @@ if [[ -z "$PLATFORMS" ]]; then
   echo "Using default platforms: $PLATFORMS"
 fi
 
+if [[ -z "$VERSION" ]]; then
+  echo "Version: $VERSION"
+fi
+
+if [[ -z "$BUILDNUM" ]]; then
+  echo "Build Num: $BUILDNUM"
+fi
+
 for platform in $PLATFORMS
 do
     platform_split=(${platform//\// })
