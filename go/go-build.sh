@@ -25,11 +25,11 @@ if [[ -z "$PLATFORMS" ]]; then
   echo "Using default platforms: $PLATFORMS"
 fi
 
-if [[ -z "$VERSION" ]]; then
+if [[ -n "$VERSION" ]]; then
   echo "Version: $VERSION"
 fi
 
-if [[ -z "$BUILDNUM" ]]; then
+if [[ -n "$BUILDNUM" ]]; then
   echo "Build Num: $BUILDNUM"
 fi
 
