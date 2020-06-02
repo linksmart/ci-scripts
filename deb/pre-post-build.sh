@@ -32,6 +32,11 @@ echo "chmod 644 /var/log/${NAME}.log"                                 >> postins
 echo ""                                                               >> postinst
 echo "chown -R ${NAME}bot:${NAME}bot /usr/local/bin/${NAME}"          >> postinst
 echo ""                                                               >> postinst
+if [[ -n "$DATADIR" ]]; then
+  echo "mkdir -p /var/lib/${NAME}"                                    >> postinst
+  echo "chown -R ${NAME}bot:${NAME}bot /var/lib/${NAME}"              >> postinst
+  echo ""                                                             >> postinst
+fi
 echo "if [ -f /tmp/${NAME}_service_runner ]; then"                    >> postinst
 echo "    service ${NAME} start"                                      >> postinst
 echo "    rm /tmp/${NAME}_service_runner"                             >> postinst
