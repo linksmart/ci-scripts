@@ -35,6 +35,7 @@ BINARY="$INSTLOCAL/$EXEPATH"
 echo "[Unit]"                                                  > service-$NAME
 echo "Description=$DESCRIPTION"                               >> service-$NAME
 echo "After=network-online.target"                            >> service-$NAME
+echo "Wants=network-online.target"                            >> service-$NAME
 echo ""                                                       >> service-$NAME
 echo "[Service]"                                              >> service-$NAME
 echo "User=${NAME}bot"                                        >> service-$NAME
