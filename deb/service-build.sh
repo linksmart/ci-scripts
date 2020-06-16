@@ -41,13 +41,23 @@ echo "[Service]"                                              >> service-$NAME
 echo "User=${NAME}bot"                                        >> service-$NAME
 echo "Group=${NAME}bot"                                       >> service-$NAME
 echo "WorkingDirectory=$INSTLOCAL"                            >> service-$NAME
+if [[ -n "$ENVIROMENTVARS" ]]; then
+  for enviromentvar in $ENVIROMENTVARS
+  do
+    echo "Environment=\"${enviromentvar}\""                   >> service-$NAME
+  done
+fi
 echo "PermissionsStartOnly=true"                              >> service-$NAME
 echo "ExecStartPre=setcap 'cap_net_bind_service=+ep' $BINARY" >> service-$NAME
 echo "ExecStart=$BINARY $EXEARGUMENTS"                        >> service-$NAME
 echo "KillMode=control-group"                                 >> service-$NAME
 echo "TimeoutStopSec=5"                                       >> service-$NAME
 echo "Restart=on-failure"                                     >> service-$NAME
-echo "StandardOutput=null"                                    >> service-$NAME
+if [[ -n "$LOGOUTPUT" ]]; then
+  echo "StandardOutput=$LOGOUTPUT"                            >> service-$NAME
+else
+  echo "StandardOutput=null"                                  >> service-$NAME
+fi
 echo "StandardError=syslog"                                   >> service-$NAME
 echo ""                                                       >> service-$NAME
 echo "[Install]"                                              >> service-$NAME
